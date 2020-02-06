@@ -27,7 +27,7 @@ public class Utilisateur {
 	@OneToMany(mappedBy = "utilisateur")
 	private Collection<Commentaire> commentaires;
 	@OneToMany(mappedBy = "utilisateur")
-	private Collection<Personne> personnes;
+	private Collection<Employee> employees;
 	
 
 }

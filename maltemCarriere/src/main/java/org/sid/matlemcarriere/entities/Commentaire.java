@@ -21,7 +21,7 @@ public class Commentaire {
 	private String texte;
 	private Date dateCommantaire;
 	@ManyToOne
-	private Personne personne;
+	private Employee employee;
 	@ManyToOne
 	private Utilisateur utilisateur;
 	

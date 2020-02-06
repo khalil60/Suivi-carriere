@@ -9,27 +9,29 @@ import java.util.stream.Stream;
 import org.sid.matlemcarriere.dao.CertificationRepository;
 import org.sid.matlemcarriere.dao.CommentaireRepository;
 import org.sid.matlemcarriere.dao.CompetenceRepository;
-import org.sid.matlemcarriere.dao.CurriculumRepository;
+import org.sid.matlemcarriere.dao.EmployeeRepository;
+import org.sid.matlemcarriere.dao.FileRepository;
 import org.sid.matlemcarriere.dao.NiveauRepository;
-import org.sid.matlemcarriere.dao.PersonneRepository;
 import org.sid.matlemcarriere.dao.UtilisateurRepository;
 import org.sid.matlemcarriere.entities.Commentaire;
-import org.sid.matlemcarriere.entities.Personne;
+import org.sid.matlemcarriere.entities.Employee;
 import org.sid.matlemcarriere.entities.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import net.bytebuddy.utility.RandomString;
 
 @Service
 public class SuiviCarriereInitServiceImpl implements ISuiviCarriereInitService {
 	
 	@Autowired
-	private PersonneRepository personneRepository;
+	private EmployeeRepository employeeRepository;
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
 	@Autowired
 	private CommentaireRepository commentaireRepository;
 	@Autowired
-	private CurriculumRepository curriculumRepository;
+	private FileRepository fileRepository;
 	@Autowired
 	private CompetenceRepository competenceRepository;
 	@Autowired
@@ -60,29 +62,26 @@ public class SuiviCarriereInitServiceImpl implements ISuiviCarriereInitService {
 		
 		
 	}
-	
-
-	@Override
-	public void initPersonnes() {
+	@Override                                                         
+	public void initEmployees() {
 		// TODO Auto-generated method stub
-		
-		List<String> names = new ArrayList<String>();
+	  List<String> names = new ArrayList<String>();
 		names.add("Ndiaye");
 		names.add("Cisse");
 		names.add("Diop");
-		names.add("Fall");
-		names.add("Dumas");
+	    names.add("Fall");
+	    //names.add("Dumas");
 		
 		utilisateurRepository.findAll().forEach(users->{
 			
 			Stream.of("Ibrahima","Omar","Ousseynou","Khalil","Aida","Dieynaba","Patrick","Jean").forEach(p->{
 				
-				Personne personne = new Personne();
-				personne.setFirstname(p);
-				personne.setDateEmbauche(new Date());
-				personne.setName(names.get(new Random().nextInt(names.size())));
-				personne.setUtilisateur(users);
-				personneRepository.save(personne);
+				Employee employee = new Employee();
+				employee.setFirstname(p);
+				employee.setDateEmbauche(new Date());
+				employee.setLastname(names.get(new Random().nextInt(names.size())));
+				employee.setUtilisateur(users);
+				employeeRepository.save(employee);
 				
 				
 			});
@@ -98,12 +97,13 @@ public class SuiviCarriereInitServiceImpl implements ISuiviCarriereInitService {
 	public void initCommentaires() {
 		// TODO Auto-generated method stub
 		utilisateurRepository.findAll().forEach(user->{
-			personneRepository.findAll().forEach(p->{
+			employeeRepository.findAll().forEach(p->{
 				
 				Commentaire commentaire = new Commentaire();
 				commentaire.setDateCommantaire(new Date());
 				commentaire.setUtilisateur(user);
-				commentaire.setPersonne(p);
+				commentaire.setEmployee(p);
+				commentaire.setTexte(RandomString.make());
 				commentaireRepository.save(commentaire);
 				
 			});
@@ -130,7 +130,7 @@ public class SuiviCarriereInitServiceImpl implements ISuiviCarriereInitService {
 	}
 
 	@Override
-	public void initCurriculum() {
+	public void initFileModel() {
 		// TODO Auto-generated method stub
 		
 	}
