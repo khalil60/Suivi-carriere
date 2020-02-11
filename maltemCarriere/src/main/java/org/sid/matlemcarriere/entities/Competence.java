@@ -16,7 +16,8 @@ import lombok.ToString;
 public class Competence {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
+    private String tribu;
+	private String nomCompetence;
 	@ManyToOne
 	private Certification certification;
 	@ManyToOne

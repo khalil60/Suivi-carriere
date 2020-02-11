@@ -28,6 +28,7 @@ public class Employee {
 	private int experience;
 	@Temporal(TemporalType.DATE)
 	private Date dateEmbauche;
+	@Temporal(TemporalType.DATE)
 	private Date dateDiplome;
 	private String email;
 	@OneToMany(mappedBy = "employee")
