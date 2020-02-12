@@ -1,7 +1,6 @@
 package org.sid.matlemcarriere;
 
 import org.sid.matlemcarriere.entities.Certification;
-import org.sid.matlemcarriere.entities.Commentaire;
 import org.sid.matlemcarriere.entities.Employee;
 import org.sid.matlemcarriere.entities.Utilisateur;
 import org.sid.matlemcarriere.service.ISuiviCarriereInitService;
@@ -26,7 +25,7 @@ public class MaltemCarriereApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		repositoryRestConfiguration.exposeIdsFor(Employee.class,Utilisateur.class,Certification.class,Commentaire.class);
+		repositoryRestConfiguration.exposeIdsFor(Employee.class,Utilisateur.class,Certification.class);
 		/*repositoryRestConfiguration.getCorsRegistry()
 		.addMapping("/**")
 		.allowedOrigins("http://localhost:4200")

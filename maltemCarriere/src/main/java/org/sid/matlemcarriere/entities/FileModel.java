@@ -18,7 +18,7 @@ import lombok.ToString;
 @Table(name="file_model")
 public class FileModel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
   

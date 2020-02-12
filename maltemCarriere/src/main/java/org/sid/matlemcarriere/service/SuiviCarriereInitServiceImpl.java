@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
+
 import org.sid.matlemcarriere.dao.CertificationRepository;
 import org.sid.matlemcarriere.dao.CommentaireRepository;
 import org.sid.matlemcarriere.dao.CompetenceRepository;
@@ -70,11 +71,15 @@ public class SuiviCarriereInitServiceImpl implements ISuiviCarriereInitService {
 		names.add("Cisse");
 		names.add("Diop");
 	    names.add("Fall");
+	    names.add("Ndiaye");
+		names.add("Cisse");
+		names.add("Diop");
+	    names.add("Fall");
 	    //names.add("Dumas");
 		
 		utilisateurRepository.findAll().forEach(users->{
 			
-			Stream.of("Ibrahima","Omar","Ousseynou","Khalil","Aida","Dieynaba","Patrick","Jean").forEach(p->{
+			Stream.of("Ibrahima","Omar","Ousseynou","Khalil","Aida","Dieynaba","Patrick","Jean","Sokhna","Héléna").forEach(p->{
 				
 				Employee employee = new Employee();
 				employee.setFirstname(p);
